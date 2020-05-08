@@ -1,5 +1,4 @@
 const dotenv = require('dotenv');
-// const { auth } = require('express-openid-connect');
 const express = require('express');
 const users = require('./routes/user-routes');
 

@@ -1,6 +1,5 @@
-/*  middleware used by both user and admin routes get the info of a particular user 
-and edit a particular user only available when a user logs in that
-is he has the x-auth-token.. */
+/*  middleware used by both user and admin routes checking whether 
+api requests have token with dem or not */
 
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');

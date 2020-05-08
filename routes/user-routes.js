@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //route to register a admin in the DB - module - 1
+//i havn't created login route for admin u can get the token from the register route itself
 router.post('/register-admin', async(req, res) => {
     let user = await Model.User.count({ where: { email: req.body.email } });
     if (user) {
@@ -85,6 +86,12 @@ router.get('/getnewusers', [auth, isAdmin], async(req, res) => {
     res.send(users);
 });
 
+//get the list of all the users
+router.get('/', [auth, isAdmin], async(req, res) => {
+    let users = await Model.User.findAll({ where: { role: 'user' } });
+    res.send(users);
+});
+
 //check the approval status of a particular user
 router.get('/:id/approval-status', [auth, isAdmin], async(req, res) => {
     let user = await Model.User.findOne({
@@ -138,6 +145,7 @@ router.get('/:id', [auth, isUser], async(req, res) => {
 
 //Edit user information - module 3
 router.put('/:id', [auth, isUser], async(req, res) => {
+    let newPass = '';
     let user = await Model.User.findOne({
         where: {
             role: 'user',
@@ -145,13 +153,19 @@ router.put('/:id', [auth, isUser], async(req, res) => {
         },
     });
     if (!user) return res.status(404).send('User Not Found'); //check if a user is present or not
-    const salt = await bcrypt.genSalt(10);
-    const hashPass = await bcrypt.hash(req.body.password, salt);
+
+    if (req.body.password != '') {
+        const salt = await bcrypt.genSalt(10);
+        newPass = await bcrypt.hash(req.body.password, salt);
+    } else {
+        newPass = user.password;
+    }
+
     Model.User.update({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             email: req.body.email,
-            password: hashPass,
+            password: newPass,
         }, {
             where: {
                 id: req.params.id //no need to check role here

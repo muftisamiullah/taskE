@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "dc0c4a9f-7d10-48c1-935e-f8d6a2a96d98",
+		"name": "taskEresolute",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"waseem\",\n    \"lastname\": \"abdullah\",\n    \"email\": \"muftiwaseem@gmail.com\",\n    \"password\": \"letusc123@\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/api/users/register-admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						"register-admin"
+					]
+				},
+				"description": "i wanted created the login for register but the token is present in the headers after registering.\nx-auth-token"
+			},
+			"response": []
+		},
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"sajid\",\n    \"lastname\":\"Iqbal\",\n    \"email\": \"sajid@gmail.com\",\n    \"password\":\"letusc123@\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/api/users/register-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						"register-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"mufti201@gmail.com\",\n    \"password\":\"letusc123@\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of New Registered Users/Admin route",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtdWZ0aXdhc2RlZWRtQGdtYWlsLmNvbSIsImlhdCI6MTU4ODg0Njg2MH0.hFPbPV0sRs216A9Gx5gE-OGPKe47qzZpar8K74UVBSs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:6000/api/users/getnewusers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						"getnewusers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change approval status",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoibXVmdGl3YXNlZW1AZ21haWwuY29tIiwiaWF0IjoxNTg4ODQ4NDk1fQ.AVwo-7Z4wUnWdwgzUMR1HgjW84NvyIcKTk6MKGJ0vyY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:6000/api/users/10/change-approvalstatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						"10",
+						"change-approvalstatus"
+					]
+				},
+				"description": "change approval status based on the passed id ....need to pass x-auth-token"
+			},
+			"response": []
+		},
+		{
+			"name": "list of all the users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoibXVmdGl3YXNlZW1AZ21haWwuY29tIiwiaWF0IjoxNTg4OTE3MTYwfQ.bRkarIddPsCxknR9ZRyoz4Fmx-l7BbFu5OabyE5mJOI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:6000/api/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Profile Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "sdfdsf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiOiJhZG1pbiIsImVtYWlsIjoibXVmdGl3YXNlZW1AZ21haWwuY29tIiwiaWF0IjoxNTg4ODQ4NDk1fQ.AVwo-7Z4wUnWdwgzUMR1HgjW84NvyIcKTk6MKGJ0vyY",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:6000/api/users/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						"10"
+					],
+					"query": [
+						{
+							"key": "sdsdf",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user details",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJ1c2VyIiwiZW1haWwiOiJtdWZ0aTIwMUBnbWFpbC5jb20iLCJpYXQiOjE1ODg4NDk5MDl9.QrPkIUpNAx56GOIi0PWU3gK3UG57HABvDyXfSr8xb7g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"zaffasr\",\n    \"lastname\":\"mehraj\",\n    \"email\": \"zaffarmehraj@gmail.com\",\n    \"password\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6000/api/users/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6000",
+					"path": [
+						"api",
+						"users",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
